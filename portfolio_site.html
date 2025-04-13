@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header{
+            position: fixed;
+
+            /* 하위요소는 투명도 적용되지 않도록 opacity아닌 rgba */
+            background-color: rgb(255, 255, 255, 0.8);
+
+            /* 화면 너비에 꽉차도록 */
+            width: 100%;    
+
+            /* 갭 없애주기 */
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+
+            /* 그림자 생성 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+            align-items: center;
+            padding:0 150px;
+            /* 지정한 사이즈 내에 padding도 포함 */
+            box-sizing: border-box;
+            
+            display: flex;
+
+            /* 두 요소가 양끝으로 가도록 */
+            justify-content: space-between;
+        }
+
+        .title{
+            white-space: nowrap;
+            font-size:20px;
+            font-weight: bold;
+        }
+        .navigation-menu{
+            /* /* white-space: nowrap; */
+
+            /* 화면이 줄어도 크기 유지 */
+            flex-shrink: 0; 
+            /* 가로 정렬 */
+            display: flex;
+            
+            gap: 30px;
+            /* 점 없애기 */
+            list-style-type: none;
+
+            
+
+        }
+        .greeting{
+            text-align: center;
+            /* background-color:lemonchiffon;  */
+            /* 배경 그라데이션 */
+            background: linear-gradient(to right,white, rgb(249, 245, 210));
+
+            margin-top: 60px;
+            padding: 40px;
+        }
+        .greet h1{
+            font-size: 50px;
+            font-weight: 650;
+            /* 마진을 자동으로 줘서 없애줘야함 */
+            margin: 0; 
+            
+        } 
+        .greet p{
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+
+
+         /* 소개 */
+        .self-introduction{
+            padding: 150px;
+        
+        }
+        .introduction-title{
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .image-and-me{
+            /* 화면 줄때 줄바꿈 */
+            flex-wrap: wrap;
+            align-items: center;
+             /* 왼쪽에 사진, 오른쪽에 글 */
+            display: flex;
+        }
+        .image{
+            margin-top:30px;
+            background-image: url("https://i.namu.wiki/i/RxH1atqXfLerwds0v08aa1ojxfLWCMX5bCbDXY4NdoaeFNGnJWI5LKZEp8zC3XVBSQABaVv6u7dpT2gn4mXJOg.webp");
+            /* 이미지 반복 해제 */
+            background-repeat: no-repeat;
+            /* 이미지가 배경 꽉 채우기 */
+            background-size: cover;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+
+            /* 화면이 줄어도 이미지는 크기 그대로 */
+            flex-shrink: 0;
+        }
+        .me{
+            /* 화면 줄어도 줄 유지 */
+            white-space: nowrap;
+            margin-left: 40px;
+            /* 수직 가운데정렬 */
+            align-items: center;
+        }
+        .me h3{
+            
+            flex-shrink: 0;
+            font-size: 20px;
+            margin-bottom: 0;
+            margin-top: 5px;
+        }
+        .me p{
+            margin-top: 5px;
+            font-size: 15px;
+            font-weight:normal;
+        }
+        .tech img{
+            width:30px;
+            margin-top: 10px;
+            padding-right: 5px;
+        }
+
+
+
+         /* 프로젝트 */
+
+        .project{
+            /* height: 300px; */
+            align-items: center;
+            padding: 80px 150px;
+            background-color:rgb(244, 244, 250);
+        }
+        .project-title{
+            font-size: 30px;
+            font-weight: bold;
+            padding-bottom: 30px;
+        }
+        .projects{
+            display: flex;
+            gap:30px;
+        }
+        .project-detail{
+            /* 동일한 크기로 */
+            flex:1;
+            padding: 10px;
+            background-color: white;
+            border-radius: 10px;      
+            /* 그림자 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+
+        }
+
+        /* 연락처 */
+        .contact{
+            align-items: center;
+            padding: 80px 150px;
+        }
+        .contact-title{
+            font-size: 30px;
+            font-weight: bold;
+            padding-bottom: 30px;
+        }
+        .contacts{
+            display: flex;
+
+        }
+        .contact-info{
+            background-color:rgb(244, 244, 250);
+            border-radius: 10px;
+            padding: 25px;
+            margin-right: 35px;
+            width: 350px;
+        }
+        .contact-info p{
+            margin: 5px;
+        }
+        .inputtext{
+            /* 남은 부분 전체 차지*/
+            flex:1;
+            display: flex;
+            flex-direction: column;
+            width: 10%;
+            gap: 10px;
+            
+            
+        }
+        input{
+            height: 35px;
+            padding: 3px 10px;
+            /* 디폴트로 있던 inset해제 */
+            border-style: solid;
+            border-radius: 10px;
+            border-width: 1px;
+            border-color: gainsboro;
+        }
+        textarea{
+            padding: 10px;
+            font-weight:bold;
+            /* 디폴트로 있던 inset해제 */
+            border-style: solid;
+            border-radius: 10px;
+            border-width: 1px;
+            border-color: gainsboro;
+        }
+        .send-btn{
+            background-color: cornflowerblue;
+            border: 0;
+
+            /* 버튼 색은 그냥 color */
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="title">포트폴리오 과제</div>
+        <ul class ="navigation-menu">
+            <li><a class="navigation" move-section=".greeting">홈</a></li>
+            <li><a class="navigation" move-section=".self-introduction">소개</a></li>
+            <li><a class="navigation" move-section=".project">프로젝트</a></li>
+            <li><a class="navigation" move-section=".contact">연락처</a></li>
+          </ul>
+    </header>
+    <section class="greeting">
+        <div class="greet">
+            <h1>안녕하세요, 클라우드를 공부 중인 황신아입니다.<h1>
+            <p>웹 개발과 디자인에 열정을 가지고 있습니다.</p>
+        </div>
+    </section>
+    <section class="self-introduction">
+        <div class="introduction-title">소개</div>
+        <div class="image-and-me">
+        <div class="image"></div>
+            <div class = "me">
+                <h3>자기소개</h3>
+                <p>안녕하세요! 도전과 성장을 좋아하는 황신아입니다.<br>클라우드 엔지니어가 되기 위하여 공부하고 있습니다.</p>
+                <h3>기술 스택</h3>
+                <div class="tech">
+                    <img src="https://i.pinimg.com/564x/9c/4c/a1/9c4ca1bde12081093306fce89438054f.jpg">
+                    <img src="https://images.seeklogo.com/logo-png/48/2/html5-logo-png_seeklogo-480543.png">
+                    <img src="https://cdn3.iconfinder.com/data/icons/programming/100/css_3-512.png">
+                    <img src="https://img.icons8.com/?size=512&id=106036&format=png"> 
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="project">
+            <div class="project-title">프로젝트</div>
+            <div class="projects">
+                <div class="project-detail">
+                    <h3>프로젝트 1</h3>
+                    <p>프로젝트 1 설명</p>
+                </div>
+                <div class="project-detail">
+                    <h3>프로젝트 2</h3>
+                    <p>프로젝트 2 설명</p>
+                </div>
+                <div class="project-detail">
+                    <h3>프로젝트 3</h3>
+                    <p>프로젝트 4 설명</p>
+                </div>
+            </div>
+    
+
+    </section>
+    <section class="contact">
+        <div class="contact-title">연락처</div>
+            <div class="contacts">
+                <div class="contact-info">
+                    <h3>연락 정보</h3> 
+                    <p><img src="https://e7.pngegg.com/pngimages/998/303/png-clipart-computer-icons-email-gmail-miscellaneous-blue.png" style="width: 15px">  dngl1232@gmail.com</p>
+                    <p><img src="https://e7.pngegg.com/pngimages/911/648/png-clipart-github-repository-computer-icons-logo-github-blue-git-thumbnail.png" style="width:15px"></i>  github.com/sinascode</p>
+                </div>
+                <form class="inputtext">
+                    <input
+                        type="text"
+                        name="name"
+                        class="text-field"
+                        placeholder="이름"
+                    />
+                    <input
+                        type="email"
+                        name="email"
+                        class="text-field"
+                        placeholder="이메일"
+                    />
+                    <textarea name="message" placeholder="메시지" rows="10"></textarea>
+                    <input type="submit" value="보내기" class="send-btn" />
+                </form>
+            </div>
+    </section>
+
+
+
+
+    <script>
+        // navigation의 모든 요소 가져오기
+        document.querySelectorAll('.navigation').forEach(item => {
+
+            item.addEventListener('click', function (e) {
+
+                //클릭된 item의 move-section 가져옴
+                const move_section = this.getAttribute('move-section');
+                
+                const target = document.querySelector(move_section);
+
+                // target이 존재할 때만
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth', // 스크롤 부드럽게
+                        block: 'start'      // 윗부분이 화면위에 가도록
+                    });
+                }
+            });
+
+        });
+
+        
+    </script>
+</body>
+
+
+
+
